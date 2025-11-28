@@ -1,70 +1,167 @@
-# Getting Started with Create React App
+Real Estate Analysis Chatbot — Full Stack (React + Django)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application that analyzes real-estate localities from an uploaded Excel/CSV file and generates a natural-language summary, price and demand trend charts, and filtered data tables. This project was built as part of the SigmaValue Full Stack Developer Assignment.
 
-## Available Scripts
+Features
 
-In the project directory, you can run:
+Excel/CSV Upload
+Upload any dataset containing locality, year, pricing, demand, and other real estate metrics. Backend automatically parses and detects relevant columns.
 
-### `npm start`
+Natural Language Query Support
+Examples:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+“Give me analysis of Wakad”
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+“Compare Ambegaon Budruk and Aundh demand trends”
 
-### `npm test`
+“Show price growth for Akurdi over the last 3 years”
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Analytics Engine
 
-### `npm run build`
+Filters dataset based on locality or comparison query
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Produces year-wise price and demand trends
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Generates a summary of top rows and overall growth
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Supports single or multi-locality analysis
 
-### `npm run eject`
+Visual Charts
+Displays price and demand trend charts. Supports comparison charts for multiple areas. Built using React Chart.js.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Filtered Table View
+Shows matching rows in a clean, formatted table with download support.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Data Download
+Users can download filtered CSV and dataset schema.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Optional LLM Mode
+Toggle LLM mode to produce improved summaries (supports real API or mocked output).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Tech Stack
+Frontend
 
-## Learn More
+React.js
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Bootstrap
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+React Chart.js
 
-### Code Splitting
+Axios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Backend
 
-### Analyzing the Bundle Size
+Django
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Django REST Framework
 
-### Making a Progressive Web App
+Pandas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+OpenPyXL
 
-### Advanced Configuration
+Project Structure
+real-estate-chatbot/
+│
+├── backend/
+│   ├── analysis/
+│   │   ├── utils.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   ├── backend_project/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   └── uploads/
+│
+└── frontend/
+    ├── src/
+    │   ├── App.js
+    │   ├── components/
+    │   │   ├── SummarySection.js
+    │   │   ├── ChartPanel.js
+    │   │   ├── ResultsPanel.js
+    │   │   ├── QueryBar.js
+    │   ├── styles/theme.css
+    └── public/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Installation and Setup
+Backend (Django)
 
-### Deployment
+Clone the repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+git clone <your-repo-url>
+cd real-estate-chatbot/backend
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create virtual environment:
+
+python -m venv venv
+
+
+Activate environment (Windows):
+
+venv\Scripts\activate
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Run backend server:
+
+python manage.py runserver
+
+
+Backend runs at:
+
+http://localhost:8000
+
+Frontend (React)
+
+Navigate to frontend folder:
+
+cd ../frontend
+
+
+Install dependencies:
+
+npm install
+
+
+Start development server:
+
+npm start
+
+
+Frontend runs at:
+
+http://localhost:3000
+
+API Endpoints
+
+Upload File:
+
+POST /api/upload/
+
+
+Analyze Query:
+
+GET /api/analyze/?query=<your-text>&use_llm=false
+
+
+Schema:
+
+GET /api/schema/
+
+
+Download Filtered CSV:
+
+GET /api/download/?query=<your-text>
+
+Sample Queries
+
+Analyze Wakad
+
+Show price growth for Akurdi over the last 3 years
+
+Compare Ambegaon Budruk and Aundh demand trends
