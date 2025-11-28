@@ -2,7 +2,10 @@ import React, { useMemo } from "react";
 import ChartView from "./ChartView";
 
 export default function ResultsPanel({ result, errorMsg, onReRun, filePath, query }) {
-  // Prepares data for chart only when result present
+  // Use environment variable or default to localhost:8000
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
+  // Prepare data for chart only when result present
   const chartData = useMemo(() => {
     if (!result || !result.chart) return null;
     return {
@@ -41,13 +44,16 @@ export default function ResultsPanel({ result, errorMsg, onReRun, filePath, quer
           <pre className="summary-block">{result.summary}</pre>
 
           <div className="summary-actions">
+            {/*Use absolute URL to bypass React router and hit Django directly */}
             <a
               className="btn btn-outline"
-              href={`/api/download/?query=${encodeURIComponent(query || "")}${filePath ? `&file=${encodeURIComponent(filePath)}` : ""}`}
+              href={`${API_URL}/api/download/?query=${encodeURIComponent(query || "")}${filePath ? `&file=${encodeURIComponent(filePath)}` : ""}`}
             >
               Download filtered CSV
             </a>
-            <button className="btn btn-ghost" onClick={() => { console.log(result); alert("Logged raw result to console."); }}>
+            
+            {/* FIX: Removed alert(), now only logs to console */}
+            <button className="btn btn-ghost" onClick={() => console.log(result)}>
               Debug: log raw result
             </button>
           </div>
