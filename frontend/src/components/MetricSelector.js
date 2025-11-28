@@ -2,12 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-/**
- * Props:
- * - numericColumns: array of { key, label }
- * - onChange: ({ selectedMetrics: [keys], chartType, aggregateBy }) => void
- * - value: { selectedMetrics: [], chartType: "multi-line"|"multi-bar"|"geo", aggregateBy: "year"|"total" }
- */
+
 export default function MetricSelector({ numericColumns = [], value = {}, onChange }) {
   const { selectedMetrics = [], chartType = "multi-line", aggregateBy = "year" } = value || {};
 

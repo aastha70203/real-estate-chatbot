@@ -3,11 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 
-/**
- * props:
- *  - labels: x-axis labels (locations or categories)
- *  - series: array[{ label, data, backgroundColor }]
- */
+
 export default function MultiBarChart({ labels, series, height = 320 }) {
   const data = {
     labels: labels || [],

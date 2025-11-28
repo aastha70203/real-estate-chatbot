@@ -3,11 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Scatter } from "react-chartjs-2";
 
-/**
- * props:
- *  - points: [{ x: lng, y: lat, r (size), label, color }]
- *  - title
- */
+
 export default function ScatterGeoChart({ points = [], title = "Geo scatter", height = 320 }) {
   // Chart.js scatter uses x/y numeric values
   const data = {

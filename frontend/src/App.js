@@ -30,7 +30,7 @@ function App() {
         },
       });
 
-      // if server returned HTML (error page), capture it
+      // if server returned HTML (error page),this captures it
       const contentType = resp.headers.get("content-type") || "";
       if (!resp.ok) {
         // Try parse JSON error
@@ -61,7 +61,7 @@ function App() {
     }
   };
 
-  // optional: when filePath changes, re-run last query (if present)
+  // when filePath changes, re-runs last query (if present)
   useEffect(() => {
     if (filePath && query) {
       // small debounce to allow upload UI settle

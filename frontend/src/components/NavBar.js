@@ -12,7 +12,7 @@ export default function NavBar() {
           </div>
         </div>
         <nav className="nav-actions">
-          {/* intentionally left blank: removed 'Demo' badge */}
+         
         </nav>
       </div>
     </header>

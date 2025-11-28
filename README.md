@@ -1,77 +1,80 @@
 
 Real Estate Analysis Chatbot — Full Stack (React + Django)
+
 A full-stack web application that analyzes real-estate localities from an uploaded Excel/CSV file and generates a natural-language summary, price and demand trend charts, and filtered data tables. This project was built as part of the SigmaValue Full Stack Developer Assignment.
 
 Features
-Excel/CSV Upload
+1.Excel/CSV Upload
 
-Upload any dataset containing locality, year, pricing, demand, and other real estate metrics.
+2.Upload any dataset containing locality, year, pricing, demand, and other real estate metrics.
 
-The backend automatically parses and detects relevant columns.
+3.The backend automatically parses and detects relevant columns.
 
-Natural Language Query Support
+4.Natural Language Query Support
 
-Ask questions in plain English.
+5. Ask questions in plain English.
 
 Examples:
 
-"Give me analysis of Wakad"
+1."Give me analysis of Wakad"
 
-"Compare Ambegaon Budruk and Aundh demand trends"
+2."Compare Ambegaon Budruk and Aundh demand trends"
 
-"Show price growth for Akurdi over the last 3 years"
+3."Show price growth for Akurdi over the last 3 years"
 
 Analytics Engine
 
-Filters dataset based on locality or comparison query.
+1.Filters dataset based on locality or comparison query.
 
-Produces year-wise price and demand trends.
+2.Produces year-wise price and demand trends.
 
-Generates a summary of top rows and overall growth.
+3.Generates a summary of top rows and overall growth.
 
-Supports single or multi-locality analysis.
+4.Supports single or multi-locality analysis.
 
-Visual Charts
+5.Visual Charts
 
-Displays price and demand trend charts.
+6.Displays price and demand trend charts.
 
-Supports comparison charts for multiple areas.
+7.Supports comparison charts for multiple areas.
 
-Built using React Chart.js.
+8.Built using React Chart.js.
 
-Filtered Table View
+9.Filtered Table View
 
-Shows matching rows in a clean, formatted table with download support.
+10.Shows matching rows in a clean, formatted table with download support.
 
-Data Download
+11.Data Download
 
-Users can download the filtered CSV and dataset schema.
+12.Users can download the filtered CSV and dataset schema.
 
-Optional LLM Mode
+13.Optional LLM Mode
 
-Toggle LLM mode to produce improved summaries (supports real API or mocked output).
+14.Toggle LLM mode to produce improved summaries (supports real API or mocked output).
 
 Tech Stack
+
 Frontend
-React.js
+
+  React.js
 
 Bootstrap
 
-React Chart.js
+  React Chart.js
 
-Axios
+  Axios
 
 Backend
-Django
 
-Django REST Framework
+  Django
 
-Pandas
+  Django REST Framework
 
-OpenPyXL
+  Pandas
+
+  OpenPyXL
 
 Project Structure
-Plaintext
 
 real-estate-chatbot/
 │
@@ -96,32 +99,30 @@ real-estate-chatbot/
     │   ├── styles/
     │   │   └── theme.css
     └── public/
+
 Installation and Setup
+
 1. Backend (Django)
 Clone the repository:
-
-Bash
 
 git clone <your-repo-url>
 cd real-estate-chatbot/backend
 Create virtual environment:
 
-Bash
+
 
 python -m venv venv
 Activate environment (Windows):
 
-Bash
+
 
 venv\Scripts\activate
 Install dependencies:
 
-Bash
 
 pip install -r requirements.txt
 Run backend server:
 
-Bash
 
 python manage.py runserver
 The backend runs at: http://localhost:8000
@@ -129,22 +130,21 @@ The backend runs at: http://localhost:8000
 2. Frontend (React)
 Navigate to frontend folder:
 
-Bash
+
 
 cd ../frontend
 Install dependencies:
 
-Bash
 
 npm install
 Start development server:
 
-Bash
 
 npm start
 The frontend runs at: http://localhost:3000
 
 API Endpoints
+
 Upload File:
 
 POST /api/upload/
@@ -162,8 +162,9 @@ Download Filtered CSV:
 GET /api/download/?query=<text>
 
 Sample Queries
-"Analyze Wakad"
 
-"Show price growth for Akurdi over the last 3 years"
+1."Analyze Wakad"
 
-"Compare Ambegaon Budruk and Aundh demand trends"
+2."Show price growth for Akurdi over the last 3 years"
+
+3."Compare Ambegaon Budruk and Aundh demand trends"

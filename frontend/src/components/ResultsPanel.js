@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import ChartView from "./ChartView";
 
 export default function ResultsPanel({ result, errorMsg, onReRun, filePath, query }) {
-  // Prepare data for chart only when result present
+  // Prepares data for chart only when result present
   const chartData = useMemo(() => {
     if (!result || !result.chart) return null;
     return {

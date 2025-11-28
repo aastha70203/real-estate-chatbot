@@ -12,7 +12,7 @@ from typing import Optional, Dict, Any, List
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-# Optional OpenAI import - used only if OPENAI_API_KEY present.
+# OpenAI import
 try:
     import openai
 except Exception:
@@ -103,7 +103,7 @@ def filter_by_area(df: pd.DataFrame, query: str, top: int = 200) -> pd.DataFrame
     df_filtered = pd.DataFrame()
     candidate_cols = _candidate_location_columns(df)
 
-    # Primary: try to match the query directly against candidate columns
+    # Primary: tries to match the query directly against candidate columns
     mask = None
     for c in candidate_cols:
         try:
@@ -114,7 +114,7 @@ def filter_by_area(df: pd.DataFrame, query: str, top: int = 200) -> pd.DataFrame
     if mask is not None:
         df_filtered = df[mask].head(top)
 
-    # If empty, try to extract a location value from query by comparing known values
+    # If empty, tries to extract a location value from query by comparing known values
     if df_filtered.empty:
         detected = extract_area_from_query_using_values(df, query)
         if detected:
@@ -129,7 +129,7 @@ def filter_by_area(df: pd.DataFrame, query: str, top: int = 200) -> pd.DataFrame
             if mask2 is not None:
                 df_filtered = df[mask2].head(top)
 
-    # Final fallback: return empty (no match) or at least top rows if query empty
+    # Final fallback: returns empty (no match) or at least top rows if query empty
     if df_filtered is None or df_filtered.empty:
         return pd.DataFrame(columns=df.columns)  # empty df with same columns
     return df_filtered.head(top)
@@ -142,7 +142,7 @@ def aggregate_for_chart(df: pd.DataFrame, year_col: str = "year", price_col: str
     Attempts to auto-detect columns when standard names not present.
     """
     df = df.copy()
-    # Detect year column if not found
+    # Detects year column if not found
     if year_col not in df.columns:
         possible_years = [c for c in df.columns if c.lower() == "year"]
         if possible_years:
@@ -154,7 +154,7 @@ def aggregate_for_chart(df: pd.DataFrame, year_col: str = "year", price_col: str
                     year_col = "year"
                     break
 
-    # Detect price/demand candidates
+    # Detects price/demand candidates
     if price_col not in df.columns:
         price_candidates = [c for c in df.columns if "price" in c.lower() or "rate" in c.lower() or "weighted average" in c.lower()]
         price_col = price_candidates[0] if price_candidates else None

@@ -12,11 +12,10 @@ import os
 # BASE_DIR points to backend_project's parent (the backend folder)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# Replace this before publishing the repo
+
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "replace-this-with-a-secure-secret-in-prod")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() in ("1", "true", "yes")
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "*").split(",") if not DEBUG else ["*"]
@@ -35,7 +34,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
 
-    # Your apps
+    # Our apps
     "analysis",
 ]
 
@@ -78,7 +77,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "backend_project.wsgi.application"
 
-# Database - default sqlite for development (easy)
+# Database - default sqlite for development 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -107,19 +106,19 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# If you keep a repo-level static dir (optional). Remove the line if you don't have /static.
+
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# Media files (user uploads) - optional
+# Media files (user uploads) 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# REST framework basic settings (customize if needed)
+# REST framework basic settings 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
@@ -132,7 +131,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings - liberal for development
-# In production restrict to your frontend origin(s)
+
 if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
@@ -157,6 +156,6 @@ LOGGING = {
     "root": {"handlers": ["console"], "level": "INFO"},
 }
 
-# Optional: any other env-driven configuration you use
-# e.g. OPENAI_API_KEY for LLM integration
+
+#  OPENAI_API_KEY for LLM integration
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
