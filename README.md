@@ -1,4 +1,3 @@
-Here is the improved and formatted version of your README.md. I have added proper headings, bullet points, code blocks for commands, and fixed the indentation for better readability.
 
 Real Estate Analysis Chatbot — Full Stack (React + Django)
 A full-stack web application that analyzes real-estate localities from an uploaded Excel/CSV file and generates a natural-language summary, price and demand trend charts, and filtered data tables. This project was built as part of the SigmaValue Full Stack Developer Assignment.
